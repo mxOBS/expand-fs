@@ -10,6 +10,9 @@ Homepage: <insert the upstream URL, if relevant>
 
 Package: auto-expand-rootfs
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, runonce
+Depends: ${shlibs:Depends}, ${misc:Depends},
+ runonce,
+ parted,
+ e2fsprogs,
 Description: tool to expand rootfs
  This package provides a set of scripts that facilitate expanding the rootfs on any available space.
