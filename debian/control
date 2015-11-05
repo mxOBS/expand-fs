@@ -1,0 +1,15 @@
+Source: auto-expand-rootfs
+Section: unknown
+Priority: extra
+Maintainer: Josua Mayer <unknown>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Homepage: <insert the upstream URL, if relevant>
+#Vcs-Git: git://git.debian.org/collab-maint/auto-expand-rootfs.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/auto-expand-rootfs.git;a=summary
+
+Package: auto-expand-rootfs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, runonce
+Description: tool to expand rootfs
+ This package provides a set of scripts that facilitate expanding the rootfs on any available space.
