@@ -1,14 +1,14 @@
-Source: auto-expand-rootfs
+Source: expand-fs
 Section: unknown
 Priority: extra
 Maintainer: Josua Mayer <unknown>
 Build-Depends: debhelper (>= 8.0.0)
 Standards-Version: 3.9.3
 Homepage: <insert the upstream URL, if relevant>
-#Vcs-Git: git://git.debian.org/collab-maint/auto-expand-rootfs.git
-#Vcs-Browser: http://git.debian.org/?p=collab-maint/auto-expand-rootfs.git;a=summary
+#Vcs-Git: git://git.debian.org/collab-maint/expand-fs.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/expand-fs.git;a=summary
 
-Package: auto-expand-rootfs
+Package: expand-fs
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
  runonce,

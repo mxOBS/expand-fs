@@ -1,4 +1,4 @@
-auto-expand-rootfs (1) unstable; urgency=low
+expand-fs (1) unstable; urgency=low
 
   * Initial Release.
 
