@@ -1,7 +1,7 @@
 Source: expand-fs
-Section: unknown
+Section: admin
 Priority: extra
-Maintainer: Josua Mayer <unknown>
+Maintainer: Josua Mayer <josua.mayer97@gmail.com>
 Build-Depends: debhelper (>= 8.0.0)
 Standards-Version: 3.9.3
 Homepage: <insert the upstream URL, if relevant>
@@ -12,6 +12,6 @@ Package: expand-fs
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
  parted,
- e2fsprogs,
+ e2fsprogs (>= 1.42.5-1.1+deb7u1),
 Description: tool to expand rootfs
  This package provides a set of scripts that facilitate expanding the rootfs on any available space.
