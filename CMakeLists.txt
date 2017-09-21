@@ -19,6 +19,7 @@ find_package(LibFdisk REQUIRED)
 
 SET(expand_fs_SOURCES 
 	find.c
+	guess.c
 	table.c
 )
 
@@ -30,3 +31,7 @@ install(TARGETS expand_partition RUNTIME DESTINATION bin)
 add_executable(find_root find_root.c ${expand_fs_SOURCES})
 target_link_libraries(find_root ${LIBFDISK_LIBRARIES})
 install(TARGETS find_root RUNTIME DESTINATION bin)
+
+add_executable(expand_root_partition expand_root_partition.c ${expand_fs_SOURCES})
+target_link_libraries(expand_root_partition ${LIBFDISK_LIBRARIES})
+install(TARGETS expand_root_partition RUNTIME DESTINATION bin)
