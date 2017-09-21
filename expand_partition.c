@@ -39,12 +39,10 @@ int main(int argc, char *argv[]) {
 	char *s_part_number = 0;
 	int part_number = 0;
 	const char *options;
-	const char *long_options;
 	int c = 0, s = 0;
 
 	// parse arguments
 	options = "hb:p:";
-	long_options = "block-device:,partition-number:";
 	while ((c = getopt (argc, argv, options)) != -1) {
 		switch (c) {
 			case 'h':
