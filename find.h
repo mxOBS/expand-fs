@@ -22,41 +22,6 @@
  * SOFTWARE.
  */
 
-#include <getopt.h>
-#include <linux/limits.h>
-#include <stdio.h>
-
-#include "find.h"
-
-void usage(const char *name) {
-	printf("Usage: %s [-h]\n", name);
-}
-
-int main(int argc, char *argv[]) {
-	const char *options;
-	int c, s;
-	char path[PATH_MAX] = {};
-
-	// parse arguments
-	options = "h";
-	while ((c = getopt (argc, argv, options)) != -1) {
-		switch (c) {
-			case 'h':
-				usage(argv[0]);
-				return 0;
-			case '?':
-				printf("Error: encountered unknown option!\n");
-				usage(argv[0]);
-				return 1;
-		}
-	}
-
-	s = find_root_block_device(path);
-	if(s == 0) {
-		printf("Found root device: %s\n", path);
-	} else {
-		printf("Couldn't find root device!\n");
-	}
-
-	return s;
-}
+int find_root_block_device(char *buffer);
+int find_root_block_device_by_proc_mounts(char *buffer);
+int find_root_block_device_by_stat(char *buffer);
