@@ -1,0 +1,15 @@
+Source: expand-fs
+Section: unknown
+Priority: optional
+Maintainer: Josua Mayer <josua.mayer97@gmail.com>
+Build-Depends: debhelper (>= 9), cmake, libfdisk-dev
+Standards-Version: 3.9.5
+Homepage: https://github.com/mxOBS/expand-fs/
+Vcs-Git: https://github.com/mxOBS/expand-fs.git
+Vcs-Browser: https://github.com/mxOBS/expand-fs/
+
+Package: expand-fs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: System utility to expand partitions and filesystems
+ This package provides a set if utilities for automatically growing partitions and filesystems on block devices.
