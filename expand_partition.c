@@ -24,6 +24,7 @@
 
 #include <getopt.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 #include "table.h"
@@ -77,8 +78,9 @@ int main(int argc, char *argv[]) {
 		printf("Error: no valid partition number specified!\n");
 		return 1;
 	}
-	// actually partition numbers start at 0 internally
-	part_number -= 1;
+
+	// in libfdisk, partition numbers start at 0
+	part_number--;
 
 	// check access permissions for block device
 	s = access(block_device, F_OK|R_OK|W_OK);

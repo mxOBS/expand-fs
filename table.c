@@ -22,6 +22,7 @@
  * SOFTWARE.
  */
 
+#include <inttypes.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <libfdisk/libfdisk.h>
@@ -85,9 +86,9 @@ int expand_partition(const char *block_device, size_t part_number) {
 	itr = fdisk_new_iter(FDISK_ITER_FORWARD);
 	while(fdisk_table_next_partition(tbl, itr, &part) == 0) {
 		if(fdisk_partition_has_partno(part)) {
-			printf("Found partition with number %zu\n", fdisk_partition_get_partno(part));
+			printf("Found partition with number %zd\n", fdisk_partition_get_partno(part));
 		} else if(fdisk_partition_is_freespace(part)) {
-			printf("Found %lu bztes of free space\n", fdisk_partition_get_size(part));
+			printf("Found %" PRIu64 " bytes of free space\n", fdisk_partition_get_size(part));
 		}
 		part = 0;
 	}
@@ -131,7 +132,7 @@ int expand_partition(const char *block_device, size_t part_number) {
 	// add size of free space to partition
 	s = fdisk_partition_set_size(part, new_size);
 	if(s != 0) {
-		printf("Error: failed to set partition size to %lu!\n", new_size);
+		printf("Error: failed to set partition size to %" PRIu64 "!\n", new_size);
 		goto error;
 	}
 
@@ -151,7 +152,7 @@ int expand_partition(const char *block_device, size_t part_number) {
 	}
 
 	// print result
-	printf("Expanded partition %zu on %s from %lu to %lu bytes.\n", part_number, block_device, part_size, new_size);
+	printf("Expanded partition %zd on %s from %" PRIu64 " to %" PRIu64 " bytes.\n", part_number, block_device, part_size, new_size);
 
 	// done
 success:

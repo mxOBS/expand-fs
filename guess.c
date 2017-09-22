@@ -52,6 +52,9 @@ int guess_parent_block_device(const char *block_device, char *parent_block_devic
 		return 1;
 	}
 
+	// in libfdisk, partition numbers start at 0
+	(*partno)--;
+
 	//printf("Notice: Identified root partition number as %i.\n", *partno);
 
 	// now the first part of block_device is the parent block device, unless this is an unusual device name.

@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
 int expand_root_partition() {
 	char path[PATH_MAX] = {};
 	char parent_path[PATH_MAX] = {};
-	int s, l, i, partno;
+	int s, partno;
 
 	// first find root partition block device
 	s = find_root_block_device(path);
