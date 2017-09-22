@@ -29,21 +29,25 @@
 #include "find.h"
 
 void usage(const char *name) {
-	printf("Usage: %s [-h]\n", name);
+	printf("Usage: %s [-h] [-q]\n", name);
 }
 
 int main(int argc, char *argv[]) {
 	const char *options;
-	int c, s;
+	int c, s, quiet;
 	char path[PATH_MAX] = {};
 
 	// parse arguments
-	options = "h";
+	options = "hq";
+	quiet = 0;
 	while ((c = getopt (argc, argv, options)) != -1) {
 		switch (c) {
 			case 'h':
 				usage(argv[0]);
 				return 0;
+			case 'q':
+				quiet = 1;
+				break;
 			case '?':
 				printf("Error: encountered unknown option!\n");
 				usage(argv[0]);
@@ -53,9 +57,13 @@ int main(int argc, char *argv[]) {
 
 	s = find_root_block_device(path);
 	if(s == 0) {
-		printf("Found root device: %s\n", path);
+		if(quiet == 0)
+			printf("Found root device: %s\n", path);
+		else
+			printf("%s\n", path);
 	} else {
-		printf("Couldn't find root device!\n");
+		if(quiet == 0)
+			printf("Couldn't find root device!\n");
 	}
 
 	return s;
