@@ -78,7 +78,7 @@ int expand_root_partition() {
 	}
 
 	// and now to resize
-	s = expand_partition(path, partno);
+	s = expand_partition(parent_path, partno);
 	if(s != 0) {
 		printf("Error: Failed to expand root partition!\n");
 		return s;

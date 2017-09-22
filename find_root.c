@@ -55,15 +55,19 @@ int main(int argc, char *argv[]) {
 		}
 	}
 
+	// find root block
 	s = find_root_block_device(path);
-	if(s == 0) {
-		if(quiet == 0)
-			printf("Found root device: %s\n", path);
-		else
-			printf("%s\n", path);
-	} else {
+	if(s != 0) {
 		if(quiet == 0)
 			printf("Couldn't find root device!\n");
+		return s;
+	}
+
+	// print result
+	if(quiet == 0) {
+			printf("Found root device: %s\n", path);
+	} else {
+			printf("%s\n", path);
 	}
 
 	return s;
