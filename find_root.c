@@ -36,6 +36,7 @@ int main(int argc, char *argv[]) {
 	const char *options;
 	int c, s, quiet;
 	char path[PATH_MAX] = {};
+	char real_path[PATH_MAX] = {};
 
 	// parse arguments
 	options = "hq";
@@ -63,11 +64,17 @@ int main(int argc, char *argv[]) {
 		return s;
 	}
 
+	// follow symlink if any
+	if(realpath(path, real_path) == 0) {
+		printf("Error: Failed to dereference path %s!\n", path);
+		return 1;
+	}
+
 	// print result
 	if(quiet == 0) {
-			printf("Found root device: %s\n", path);
+			printf("Found root device: %s\n", real_path);
 	} else {
-			printf("%s\n", path);
+			printf("%s\n", real_path);
 	}
 
 	return s;

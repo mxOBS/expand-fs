@@ -22,6 +22,9 @@
  * SOFTWARE.
  */
 
+// enable realpath function
+#define __USE_MISC
+
 #include <getopt.h>
 #include <linux/limits.h>
 #include <stdio.h>
@@ -61,6 +64,7 @@ int main(int argc, char *argv[]) {
 
 int expand_root_partition() {
 	char path[PATH_MAX] = {};
+	char real_path[PATH_MAX] = {};
 	char parent_path[PATH_MAX] = {};
 	int s, partno;
 
@@ -71,9 +75,15 @@ int expand_root_partition() {
 		return 1;
 	}
 
-	s = guess_parent_block_device(path, parent_path, &partno);
+	// follow symlink if any
+	if(realpath(path, real_path) == 0) {
+		printf("Error: Failed to dereference path %s!\n", path);
+		return 1;
+	}
+
+	s = guess_parent_block_device(real_path, parent_path, &partno);
 	if(s != 0) {
-		printf("Error: Failed to guess parent block device of %s!\n", path);
+		printf("Error: Failed to guess parent block device of %s!\n", real_path);
 		return s;
 	}
 
