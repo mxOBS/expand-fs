@@ -1,3 +1,9 @@
+expand-fs (3) stable; urgency=medium
+
+  * dereference symlinks
+
+ -- Josua Mayer <josua.mayer97@gmail.com>  Thu, 29 Nov 2018 19:39:53 +0100
+
 expand-fs (2) unstable; urgency=low
 
   * Initial Release.
